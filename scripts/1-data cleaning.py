@@ -17,9 +17,8 @@ os.getcwd()
 
 # Read csv file
 df = pd.read_csv("./data/raw/datasets-33180-43520-heart.csv")
-df_backup = df.copy()
+# df_backup = df.copy()
 ## 303 obs, 14 vars
-
 
 # =============================================================================
 # EDA
@@ -84,3 +83,6 @@ df.target.value_counts()
 # 1    165
 # 0    138
 ## It is a balanced dataset
+
+# Create binary variable for sex
+df.sex.unique()
