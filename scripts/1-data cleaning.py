@@ -84,5 +84,45 @@ df.target.value_counts()
 # 0    138
 ## It is a balanced dataset
 
-# Create binary variable for sex
-df.sex.unique()
+# Change column names for easier reading
+df.columns = ['age', 'sex', 'chest_pain_type', 'resting_blood_pressure', 'cholesterol', 'fasting_blood_sugar', 'rest_ecg', 'max_heart_rate_achieved', \
+              'exercise_induced_angina', 'st_depression', 'st_slope', 'num_major_vessels', 'thalassemia', 'target']
+
+# Change column values to real levels for categoricla variables (for future better interpretation)
+df['sex'][df['sex'] == 0] = 'female'
+df['sex'][df['sex'] == 1] = 'male'
+
+df['chest_pain_type'][df['chest_pain_type'] == 1] = 'typical angina'
+df['chest_pain_type'][df['chest_pain_type'] == 2] = 'atypical angina'
+df['chest_pain_type'][df['chest_pain_type'] == 3] = 'non-anginal pain'
+df['chest_pain_type'][df['chest_pain_type'] == 4] = 'asymptomatic'
+
+df['fasting_blood_sugar'][df['fasting_blood_sugar'] == 0] = 'lower than 120mg/ml'
+df['fasting_blood_sugar'][df['fasting_blood_sugar'] == 1] = 'greater than 120mg/ml'
+
+df['rest_ecg'][df['rest_ecg'] == 0] = 'normal'
+df['rest_ecg'][df['rest_ecg'] == 1] = 'ST-T wave abnormality'
+df['rest_ecg'][df['rest_ecg'] == 2] = 'left ventricular hypertrophy'
+
+df['exercise_induced_angina'][df['exercise_induced_angina'] == 0] = 'no'
+df['exercise_induced_angina'][df['exercise_induced_angina'] == 1] = 'yes'
+
+df['st_slope'][df['st_slope'] == 1] = 'upsloping'
+df['st_slope'][df['st_slope'] == 2] = 'flat'
+df['st_slope'][df['st_slope'] == 3] = 'downsloping'
+
+df['thalassemia'][df['thalassemia'] == 1] = 'normal'
+df['thalassemia'][df['thalassemia'] == 2] = 'fixed defect'
+df['thalassemia'][df['thalassemia'] == 3] = 'reversable defect'
+
+df['sex'] = df['sex'].astype('object')
+df['chest_pain_type'] = df['chest_pain_type'].astype('object')
+df['fasting_blood_sugar'] = df['fasting_blood_sugar'].astype('object')
+df['rest_ecg'] = df['rest_ecg'].astype('object')
+df['exercise_induced_angina'] = df['exercise_induced_angina'].astype('object')
+df['st_slope'] = df['st_slope'].astype('object')
+df['thalassemia'] = df['thalassemia'].astype('object')
+
+# Create dummy variables for categorial variables and drop the first category of each (Reference Coding)
+df = pd.get_dummies(df, drop_first=True)
+
