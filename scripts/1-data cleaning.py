@@ -115,6 +115,7 @@ df['thalassemia'][df['thalassemia'] == 1] = 'normal'
 df['thalassemia'][df['thalassemia'] == 2] = 'fixed defect'
 df['thalassemia'][df['thalassemia'] == 3] = 'reversable defect'
 
+# Change data type to object
 df['sex'] = df['sex'].astype('object')
 df['chest_pain_type'] = df['chest_pain_type'].astype('object')
 df['fasting_blood_sugar'] = df['fasting_blood_sugar'].astype('object')
@@ -125,4 +126,7 @@ df['thalassemia'] = df['thalassemia'].astype('object')
 
 # Create dummy variables for categorial variables and drop the first category of each (Reference Coding)
 df = pd.get_dummies(df, drop_first=True)
+## 303 obs, 20 vars
 
+# Export to csv
+df.to_csv('./data/clean/data_clean.csv')
