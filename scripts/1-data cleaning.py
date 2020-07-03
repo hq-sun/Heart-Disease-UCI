@@ -129,4 +129,4 @@ df = pd.get_dummies(df, drop_first=True)
 ## 303 obs, 20 vars
 
 # Export to csv
-df.to_csv('./data/clean/data_clean.csv')
+df.to_csv('./data/clean/data_clean.csv', index = False)
