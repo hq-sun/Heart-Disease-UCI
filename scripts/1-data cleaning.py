@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 os.getcwd()
 
 # Read csv file
-df = pd.read_csv("./data/raw/datasets-33180-43520-heart.csv")
+df = pd.read_csv("../data/raw/datasets-33180-43520-heart.csv")
 # df_backup = df.copy()
 ## 303 obs, 14 vars
 
@@ -33,7 +33,7 @@ def dataframe_description(df, col):
     print('Number of Unique Values:', len(df[col].unique()))
     print('\n')
 
-# For continuous variables    
+# For continuous variables
 def descriptive_stats_continuous(df, col):
     print('Column Name:', col)
     print('Mean:', np.mean(df[col]))
@@ -50,8 +50,8 @@ def plot_distribution(df, col):
     plt.xticks(rotation=90)
     plt.title('Distribution Plot for ' + col)
     plt.show()
-    
-# Plotting count plots for categorical variables 
+
+# Plotting count plots for categorical variables
 def plot_counts(df, col):
     sns.set(style='darkgrid')
     ax = sns.countplot(x=col, data=df)
